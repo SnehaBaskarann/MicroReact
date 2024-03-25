@@ -1,0 +1,33 @@
+.nav-pills li a:hover{
+    /* background-color:#E3E1D9; */
+    background-color:rgb(116, 116, 157);;
+}
+#dashboard{
+    width:60vw;
+    position:absolute;
+    left: 0;
+  
+      }
+    
+
+.item{
+    margin-left: -22vh;
+    
+}
+
+.color{
+    background-color: rgb(66, 66, 126);
+    min-height:88vh!important;
+    margin-top:-40;
+   
+}
+
+/* .Menu{
+    margin-bottom:10;
+} */
+
+
+.p-2{
+    margin-top: 100;
+}
+
