@@ -2,8 +2,8 @@
 {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-around;
-    margin: 80px;
+    gap:20px;
+    justify-content:space-between;
+    margin-right:75px;
     
 }

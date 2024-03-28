@@ -1,6 +1,7 @@
 import React from 'react';
 import '../components/Payment.css';
 import {Link} from 'react-router-dom';
+import Navbar from './Navbar';
 
 function Payment() {
 
@@ -10,6 +11,7 @@ function Payment() {
 
 
   return (
+    <div><Navbar/>
     <div>
     <div class="container p-0">
         <div class="card px-4">
@@ -47,6 +49,7 @@ function Payment() {
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
   )

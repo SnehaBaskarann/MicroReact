@@ -3,6 +3,7 @@ import { Button, Card, CardBody, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './Navbar';
+import {Link} from 'react-router-dom';
 
 
 
@@ -14,7 +15,7 @@ const initialValues = {
   mobileModel: "",
   mobilePrice: "",
   mobileImage:null,
-  stockId:null // Assuming the default stockId is 1
+  stockId:"" // Assuming the default stockId is 1
 };
 
 function UploadformUpdate() {
@@ -40,7 +41,7 @@ function UploadformUpdate() {
     e.preventDefault();
     const formData = new FormData();
     Object.entries(values).forEach(([key, value]) => {
-      if (key !== "id") {
+      if (key !== "mobileId") {
         formData.append(key, value);
       }
     });
@@ -49,8 +50,9 @@ function UploadformUpdate() {
 
     try {
         debugger
+        console.log(values.mobileId);
       const response = await axios.put(
-        "http://localhost:5277/api/Mobile/UpdateMobile/${values.id}", // Assuming the endpoint for update
+        "http://localhost:5277/api/Mobile/UpdateMobile/"+values.mobileId, // Assuming the endpoint for update
         formData,
         {
           headers: {
@@ -76,7 +78,7 @@ function UploadformUpdate() {
               <Form.Group className="mb-3">
                 <Form.Label>Mobile Id</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="int"
                   name="mobileId"
                   placeholder="Enter the Mobile Id"
                   value={values.mobileId}
@@ -138,11 +140,14 @@ function UploadformUpdate() {
               </Form.Group>
 
               <Button type="submit">Update</Button>
+            <Link to="/Dashboard" style={{marginLeft:"65%" , textDecoration:"none"}}>Back to Dashboard</Link>
+
             </Form>
           </CardBody>
         </Card>
       </Container>
     </div>
+
   );
 }
 

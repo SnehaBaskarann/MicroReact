@@ -1,16 +1,14 @@
 import React from 'react'
-import cart from './components/images/cart.jpg'
-import Navbar from './components/Navbar';
-
+import Mobile from './components/images/mob.jpg';
+import Homenavbar from './Homenavbar';
 
 
 
 function HomePage() {
   return (
-    <div><Navbar/>
+    <div><Homenavbar/>
     <div class='dashboard' >
-    <img src={cart} className='Home'></img>
-    
+    <img src={Mobile} alt='mobile' className='img' ></img>
     </div>
     </div>
  
@@ -19,3 +17,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
+
+

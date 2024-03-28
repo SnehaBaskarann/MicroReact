@@ -1,63 +1,37 @@
-// import axios from 'axios';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import {Button} from 'react-bootstrap';
-
-// function DeleteMobile() {
-//     const handleDelete = async (id) => {
-//         try {
-//             const response = await axios.delete(`http://localhost:5277/api/Mobile/DeletemobileDetails/${id}`);
-//             if (response.status === 204) {
-//                 // Successfully deleted
-//                 //onDeleteSuccess(id); // This will update the parent component's state
-//                 alert('Pet accessory deleted successfully!');
-//             }
-//         } catch (error) {
-//             if (error.response && error.response.status === 404) {
-//                 alert('Pet accessory not found.');
-//             } else {
-//                 alert('An error occurred while deleting the pet accessory.');
-//             }
-//         }
-//     };
- 
-   
-   
- 
-//     return (
-//       <Button variant="danger" onClick={handleDelete}>Delete </Button>
-       
-//     );
-// };
-    
-    
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-
-const DeleteMobile = ({ id }) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const handleDelete = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.delete(`http://localhost:5277/api/Mobile/DeletemobileDetails/${id}`);
-      console.log(response.data); // Assuming you want to log the response
-    } catch (error) {
-      setError(error.response.data.message); // Assuming the error message is provided in the response
-    }
-    setIsLoading(false);
-  };
-
-  return (
-    <div>
-      <button onClick={handleDelete} disabled={isLoading}>
-        {isLoading ? 'Deleting...' : 'Delete Mobile Details'}
-      </button>
-      {error && <p>Error: {error}</p>}
-    </div>
-  );
-};
-
+import { Button } from 'react-bootstrap';
 
  
-export default DeleteMobile;
+const DeleteMobileButton = ({ mobileId, onDeleteSuccess }) => {
+    const handleDelete = async () => {
+        try {
+            const response = await axios.delete(`http://localhost:5277/api/Mobile/DeletemobileDetails/${mobileId}`);
+            if (response.status === 200) {
+                // Call the onDeleteSuccess callback if provided
+                onDeleteSuccess && onDeleteSuccess();
+                alert('Mobile deleted successfully !');
+            }
+        } catch (error) {
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.error('Error response:', error.response.data);
+                alert('Failed to delete the mobile');
+            } else if (error.request) {
+                // The request was made but no response was received
+                console.error('Error request:', error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error('Error message:', error.message);
+            }
+        }
+    };
+ 
+    return (
+        <Button className='btn btn-danger' onClick={handleDelete}>Delete</Button>
+        
+    );
+};
+ 
+export default DeleteMobileButton;

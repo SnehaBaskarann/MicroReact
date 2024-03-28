@@ -55,7 +55,6 @@ function BillGeneration() {
       </div>
       <div class="text-center" style={{marginTop:"90px;"}}>
         <a href="javascript:window.print()">Print the bill</a>
-        <a href="./bill" to="C:\Users\sneha.baskaran\Downloads\Bill" download={PictureAsPdf}><button class="btn-danger"><i class="fa fa-download"></i>Download</button></a>
         <p></p>
       </div>
 

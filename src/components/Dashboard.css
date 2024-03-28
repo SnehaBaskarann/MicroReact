@@ -3,7 +3,7 @@
     background-color:rgb(116, 116, 157);;
 }
 #dashboard{
-    width:60vw;
+    width:65vw;
     position:absolute;
     left: 0;
   
@@ -17,8 +17,8 @@
 
 .color{
     background-color: rgb(66, 66, 126);
-    min-height:88vh!important;
-    margin-top:-40;
+    min-height:90vh!important;
+    margin-top:-10;
    
 }
 
@@ -29,5 +29,9 @@
 
 .p-2{
     margin-top: 100;
+}
+
+.sidebar{
+    position: fixed;
 }
 

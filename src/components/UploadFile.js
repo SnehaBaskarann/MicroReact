@@ -128,7 +128,7 @@ function Uploadform() {
  
             <Button type="submit">Submit</Button>
             &nbsp;
-            <Link to="/Dashboard" style={{marginLeft:"60%"}}>Back to Dashboard</Link>
+            <Link to="/Dashboard" style={{marginLeft:"65%" , textDecoration:"none"}}>Back to Dashboard</Link>
           </Form>
         </CardBody>
       </Card>

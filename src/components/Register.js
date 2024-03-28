@@ -4,8 +4,8 @@ import { useState} from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
-import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
-//import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+// import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 
  
  
@@ -36,7 +36,7 @@ function Register(){
         setIsSubmit(true);
         try {
  
-            const response = await axios.post("http://localhost:5277/api/User", formValues);
+            const response = await axios.post("http://localhost:5277/api/User/Create", formValues);
    
             console.log('Registeration successfull:', response.data);
    
@@ -95,7 +95,7 @@ function Register(){
      <div className='auth-inner'> 
      <form onSubmit={handleSubmit}>
  
-     <h3 className='lbl'><PersonAddAltRoundedIcon fontSize="large" id="icon" style={{color:"rgb(66, 66, 126)"}}/>Sign Up</h3>
+     <h3 className='lbl'><PersonAddAltOutlinedIcon fontSize="large" id="icon" style={{color:"rgb(66, 66, 126)" }}/> Sign Up</h3>
         <div><TextField id="outlined-basic"  label="FirstName" type="text" variant="outlined" name='firstName' value={formValues.firstName}  onChange={handleChange}/></div><p style={{color:"red"}}>{formErrors.firstName}</p><br></br>
          <div><TextField id="outlined-basic"  label="LastName" type="text" variant="outlined" name='lastName' value={formValues.lastName} onChange={handleChange}/></div><p style={{color:"red"}}>{formErrors.lastName}</p><br></br>
   

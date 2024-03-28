@@ -18,7 +18,8 @@ code {
   box-sizing: border-box;
 } 
 body {
-  background: #E3E1D9 !important ;
+  /* background: #E3E1D9 !important ; */
+  background: #ffffff;
   /* background-image:url(C:\Users\sneha.baskaran\Downloads\gradient.jpg); */
   /* background: rgb(148,187,233);
   background: radial-gradient(circle, rgba(148,187,233,1) 2%, rgba(238,174,202,1) 76%); */
@@ -40,6 +41,12 @@ body, html, .App, #root,.auth-wrapper {
   height: 100%;
 
   }
+   .img{
+    height:100%;
+    width:100%;
+    position: fixed;
+    /* color:white; */
+  }
 .navbar-light {
   
    /* background-color:#ffffff;  */
@@ -60,14 +67,14 @@ body, html, .App, #root,.auth-wrapper {
   width:450px;
   /* margin-top: 15vh !important; */
   margin: auto;
-  background: #ffffff;
+  /* background: #ffffff; */
   /* box-shadow: 0px 14px 80px rgba(227, 227, 232, 0.284); */
   box-shadow: 1px 12px 50px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius:18px;
   transition: all .3s;
   
-  /* background:transparent;  */
+
   
 }
 .auth-wrapper .form-control:focus {
@@ -101,10 +108,28 @@ body, html, .App, #root,.auth-wrapper {
 } */
 
 #nav1{
-  height:8%;
+  height:10%;
 }
 
 
 #lsmsg{
   display: none;
+}
+
+
+
+#searchBar{
+  margin-left: 90%;
+  margin-top: -10%;
+}
+
+/* .admin{
+  margin-right:100vh;
+} */
+
+#imgadmin{
+  margin-left:50%;
+  margin-top: 0%;
+  height:80vh;
+
 }

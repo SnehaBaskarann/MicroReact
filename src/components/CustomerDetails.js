@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import {Link} from 'react-router-dom';
  
 const CustomerDetails = () => {
     const [details, setDetails] = useState([]);
@@ -51,6 +52,8 @@ const CustomerDetails = () => {
             </tbody>
         </table>
         </div>
+        <Link to="/Dashboard" style={{marginLeft:"90%", textDecoration:"none"}}>Back to Dashboard</Link>
+
         </>
     );
 };

@@ -4,40 +4,70 @@ import { useContext } from "react";
 import { Card, Button } from "react-bootstrap";
 import { cartContext } from "../App";
 import Header from "./Header";
-import { Cookie } from "@mui/icons-material";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 export const Product = ({ product }) => {
   const { cart, setCart } = useContext(cartContext);
+  const navigate = useNavigate();
   // const name =
   //   product.title.length > 21
   //     ? product.title.substring(0, 20) + ".."
   //     : product.title;
-  const addCart = () => {
+  const addCart = (mid) => {
     setCart([...cart, product]);
+    const mobileid=mid;
+    const result={
+      "cartId": 0,
+      "mobileId": mobileid,
+      "userId": Cookies.get("UserId")
+    }
+    console.log(result);
+    axios.post(`http://localhost:5277/api/Cart/Create`,result).then((response)=>{
+      console.log(response);
+      navigate("/finalcart")
+    }).catch((err)=>{
+      console.log(err);
+      
+    })
   };
-  const removeCart = () => {
+  const removeCart = (mid) => {
     setCart(cart.filter((c) => c.id !== product.id));
+    const mobileid=mid;
+    const result={
+      "cartId": 0,
+      "mobileId": mobileid,
+      "userId": Cookies.get("UserId")
+    }
+    axios.post(`http://localhost:5277/api/Cart/Delete`, result).then((response)=>{
+      console.log(response);
+    }).catch((err)=>{
+      console.log(err);
+    })
   };
 
 // const Cart=async(event)=>{
-//   var Email=Cookies.get("EmailId")
-// const[userId,setUserId]=useState();
+ 
 
-// useEffect(() => {
-//   axios.post('http://localhost:5277/api/User/FindEmail/api/FindEmail',{
-//     emailId:Email,
-//   })
-//   .then(res=>{
-//     setUserId(res.data.userId);
-//     console.log(res.data);
-//     Cookies.set( "UserId", res.data.userId)
+useEffect(() => {
+  var Email=Cookies.get("EmailId")
+  // const [userId,setUserId]=useState();
+  axios.post('http://localhost:5277/api/User/FindEmail/api/FindEmail',{
+    emailId:Email,
+  })
+  .then(res=>{
+    // setUserId(res.data.userId);
+    console.log(res.data);
+    Cookies.set( "UserId", res.data.userId)
  
  
-// })
-// .catch((err)=>{console.error(`Error! ${err}`)});
-// }, [])
+})
+.catch((err)=>{console.error(`Error! ${err}`)});
+}, [])
+
+
  
 // const removeCart= (id)=>{
 //   console.log(id);
@@ -69,8 +99,9 @@ export const Product = ({ product }) => {
 
 return (
   <>
+  
  <Header cart={cart}/>
-  <Card style={{ width: "18rem" }} className="mt-4">
+  <Card style={{ width:"18rem", borderRadius:"2%",borderColor:"GrayText"}} className="mt-2">
     <Card.Img className="card-img"  src={product.imageUrl}/>
     <Card.Body>
       {/* <Card.Title>{name}</Card.Title> */}
@@ -91,7 +122,7 @@ return (
         <Button
           className="btn btn-danger"
           variant="primary"
-          onClick={()=>removeCart(product.mobileId)}
+          onClick={()=>removeCart(product.id)}
         >
           Remove Cart
         </Button>
@@ -99,13 +130,14 @@ return (
         <Button
           className="btn btn-primary"
           variant="primary"
-          onClick={addCart}
+          onClick={()=>addCart(product.id)}
         >
           Add to Cart
         </Button>
       )}
     </Card.Body>
   </Card>
+
   </>
 )
 
@@ -115,3 +147,8 @@ return (
 
 
   
+
+
+
+
+
